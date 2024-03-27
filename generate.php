@@ -1,44 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../style.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Document</title>
 </head>
-
 <body>
     <header>
-        <h3 class="logo">RESTORAN</h3>
-        <nav class="nav">
-            <a href="index.php">HOME</a>
-            <a href="menu.php">MENU</a>
-            <a href="order.php">ORDER</a>
-            <a href="pelanggan.php">PELANGGAN</a>
-            <a href="generate.php">GENERATE</a>
-            <a href="../logout.php">logout</a
-        </nav>
+        <h3>LAPORAN RESTORAN</h3>
     </header>
     <section class="main">
-        <button class="btn" style="background-color: #7168f0;"><a href="export_generate.php">Export</a></button>
-         <!-- <button class="btn" style="background-color: #7168f0;"><a href="print_generate.php">Print</a></button><br>  -->
         <table>
-            <tr>
+            <tr style="background-color:#7168f0">
                 <th>NO</th>
                 <th>ID TRANSAKSI</th>
                 <th>ID PESANAN</th>
                 <th>ID MENU</th>
                 <th>NAMA MENU</th>
-                <th>ID PELANGGAN</th>
+                <!-- <th>ID PELANGGAN</th>
                 <th>NAMA PELANGGAN</th>
                 <th>JUMLAH</th>
                 <th>TOTAL</th>
                 <th>BAYAR</th>
-                <th>KEMBALIAN</th>
-                <th>OPSI</th>
+                <th>KEMBALIAN</th>-->
+                <th>OPSI</th> 
             </tr>
             <?php
             include '../koneksi.php';
@@ -107,6 +94,13 @@
                         echo "<td>" . $bayar . "</td>";
                         echo "<td>" . $id_transaksi . "</td>";
                         echo "</tr>";
+
+                        // Tampilkan data pesanan beserta data transaksi, menu, dan pelanggan
+echo "<td>";
+echo "<button class='btn-edit' onclick='editFunction(" . $row_pesanan['id_pesanan'] . ")'>Edit</button>";
+echo "<button class='btn-delete' onclick='deleteFunction(" . $row_pesanan['id_pesanan'] . ")'>Hapus</button>";
+echo "</td>";
+
                     }
                 } else {
                     echo "Tidak ada data yang ditemukan.";
